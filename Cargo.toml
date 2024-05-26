@@ -1,0 +1,12 @@
+[package]
+name = "tiny-data"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+reqwest = { version = "0.12", features = ["json", "stream"] }
+tokio = { version = "1", features = ["full"] }
+indicatif = "0.17"
+futures = "0.3"
+regex = "1.1"
+clap = { version = "4.5.4", features = ["derive"] }
