@@ -1,5 +1,5 @@
 # tiny-data
-A rust-based cli tool for building computer vision datasets.
+A rust-based cli tool for building computer vision datasets built with [reqwest](https://docs.rs/reqwest/latest/reqwest/) and [tokio](https://tokio.rs/). 
 
 ![alt text](assets/images/demo.gif)
 
