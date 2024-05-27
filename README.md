@@ -18,11 +18,41 @@ Options:
 Example:
 ```bash
 >> tiny-data --nsamples 10  --topics ferris_the_crab apples dogs --dir demo
->> tree demo -L 1
+>> tree demo
 demo
 ├── apples
+│   ├── 0.jpeg
+│   ├── 1.jpeg
+│   ├── 2.jpeg
+│   ├── 3.jpeg
+│   ├── 4.jpeg
+│   ├── 5.jpeg
+│   ├── 6.jpeg
+│   ├── 7.jpeg
+│   ├── 8.jpeg
+│   └── 9.jpeg
 ├── dogs
+│   ├── 0.jpeg
+│   ├── 1.jpeg
+│   ├── 2.jpeg
+│   ├── 3.jpeg
+│   ├── 4.jpeg
+│   ├── 5.jpeg
+│   ├── 6.jpeg
+│   ├── 7.jpeg
+│   ├── 8.jpeg
+│   └── 9.jpeg
 └── ferris_the_crab
+    ├── 0.jpeg
+    ├── 1.jpeg
+    ├── 2.jpeg
+    ├── 3.jpeg
+    ├── 4.jpeg
+    ├── 5.jpeg
+    ├── 6.jpeg
+    ├── 7.jpeg
+    ├── 8.jpeg
+    └── 9.jpeg
 ```
 
 
