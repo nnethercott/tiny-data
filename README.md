@@ -1,7 +1,7 @@
 # tiny-data
 A rust-based cli tool for building computer vision datasets.
 
-(demo.gif)
+![alt text](assets/images/demo.gif)
 
 You can get a list of the available options by running the command below:
 ```bash
@@ -17,12 +17,12 @@ Options:
 
 Example:
 ```bash
->> cargo run --bin tiny-data -- -t pistachio fruit_basket brand_new_iphone --nsamples 30 -d demo
+>> tiny-data --nsamples 10  --topics ferris_the_crab apples dogs --dir demo
 >> tree demo -L 1
 demo
-├── brand_new_iphone
-├── fruit_basket
-└── pistachio
+├── apples
+├── dogs
+└── ferris_the_crab
 ```
 
 
