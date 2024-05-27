@@ -2,6 +2,7 @@
 name = "tiny-data"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
 description = "A cli tool for building computer vision datasets."
 repository = "https://github.com/nnethercott/tiny-data/tree/main"
 readme = "README.md"
