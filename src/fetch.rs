@@ -75,7 +75,7 @@ impl Fetcher {
             //build params
             let mut params = Params::new();
             params.start = offset;
-            params.q = query.to_string();
+            params.q = format_query(query);
 
             futures.push(tokio::spawn(async move {
                 Self::google_search(params).await.unwrap()
@@ -103,6 +103,12 @@ impl Fetcher {
         let urls = extract_urls(&body);
         Ok(urls)
     }
+}
+
+fn format_query(topic: &str) -> String {
+    //remove underscores
+    let new_topic: Vec<String> = topic.split('_').map(String::from).collect();
+    new_topic.join(" ")
 }
 
 // from chat

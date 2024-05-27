@@ -106,7 +106,10 @@ impl DLManager {
             let filename = format!("{}/{}.jpeg", dir, id);
 
             futures.push(tokio::spawn(async move {
-                task.download(filename).await.unwrap()
+                match task.download(filename).await {
+                    Ok(i) => i,
+                    _ => 0,
+                }
             }));
         }
         let did_download = join_all(futures).await;

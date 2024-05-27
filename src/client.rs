@@ -4,6 +4,7 @@ use indicatif::ProgressBar;
 use indicatif::{MultiProgress, ProgressStyle};
 use std::fs::create_dir_all;
 use std::sync::Arc;
+use std::time::Instant;
 use tokio::task::JoinHandle;
 
 use crate::download::*;
@@ -56,12 +57,14 @@ impl TinyDataClient {
     pub async fn run(&mut self) {
         let args = self.args.clone();
 
+        //create image directories
         for topic in &args.topics {
             let dir = format!("{}/{}", args.dir, topic);
             create_dir_all(&dir).expect("failed to create directory");
         }
 
         let nsamples = args.nsamples;
+        // need thread-safe string for async
         let dir = Arc::new(args.dir);
 
         let futures: Vec<JoinHandle<u8>> = args
@@ -88,13 +91,19 @@ impl TinyDataClient {
             })
             .collect();
 
+        //time execution
+        let now = Instant::now();
         let total = join_all(futures).await;
+        let elapsed = now.elapsed();
+
         let total: u8 = total.into_iter().map(|res| res.unwrap()).sum();
+
         println!(
-            "{}/{} files saved successfully to `./{}` 📦",
+            "{}/{} files saved successfully to `./{}` in {}s 📦",
             total,
             self.args.nsamples * self.args.topics.len(),
-            self.args.dir
+            self.args.dir,
+            elapsed.as_secs(),
         );
     }
 }
