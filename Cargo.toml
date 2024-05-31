@@ -14,3 +14,10 @@ indicatif = "0.17"
 futures = "0.3"
 regex = "1.1"
 clap = { version = "4.5.4", features = ["derive"] }
+anyhow = "1.0.86"
+tokenizers = "0.19.1"
+image = "0.25.1"
+candle-core = { git = "https://github.com/huggingface/candle.git", version = "0.5.1" }
+candle-nn = { git = "https://github.com/huggingface/candle.git", version = "0.5.1" }
+candle-transformers = { git = "https://github.com/huggingface/candle.git", version = "0.5.1" }
+hf-hub = "0.3.2"

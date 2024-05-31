@@ -14,7 +14,8 @@ use crate::fetch::*;
 pub struct Args {
     //https://stackoverflow.com/questions/74936109/how-to-use-clap-to-take-create-a-vector
     /// Space-delimited list of image classes
-    #[arg(short, long, num_args = 1.., value_delimiter = ' ', value_parser)]
+    // #[arg(short, long, num_args = 1.., value_delimiter = ' ', value_parser)]
+    #[arg(short, long, num_args = 1.., use_value_delimiter=true)]
     pub topics: Vec<String>,
 
     /// number of images to download per-class
