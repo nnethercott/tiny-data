@@ -1,11 +1,15 @@
 [package]
-name = "tiny-data"
+name = "tiny_data"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
 description = "A cli tool for building computer vision datasets."
 repository = "https://github.com/nnethercott/tiny-data/tree/main"
 readme = "README.md"
+
+[lib]
+name = "tiny_data"
+crate-type = ["lib", "cdylib"]
 
 [dependencies]
 reqwest = { version = "0.12", features = ["json", "stream"] }
@@ -14,3 +18,5 @@ indicatif = "0.17"
 futures = "0.3"
 regex = "1.1"
 clap = { version = "4.5.4", features = ["derive"] }
+pyo3 = { version = "0.14", features = ["extension-module"] }
+pyo3-asyncio = { version = "0.14", features = ["tokio-runtime"] }

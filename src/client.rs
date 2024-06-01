@@ -1,4 +1,3 @@
-use clap::Parser;
 use futures::future::join_all;
 use indicatif::ProgressBar;
 use indicatif::{MultiProgress, ProgressStyle};
@@ -9,22 +8,6 @@ use tokio::task::JoinHandle;
 
 use crate::download::*;
 use crate::fetch::*;
-
-#[derive(Parser, Debug, Clone)]
-pub struct Args {
-    //https://stackoverflow.com/questions/74936109/how-to-use-clap-to-take-create-a-vector
-    /// Space-delimited list of image classes
-    #[arg(short, long, num_args = 1.., value_delimiter = ' ', value_parser)]
-    pub topics: Vec<String>,
-
-    /// number of images to download per-class
-    #[arg(short, long, default_value_t = 20)]
-    pub nsamples: usize,
-
-    /// name of directory to save to
-    #[arg(short, long, default_value = "images")]
-    pub dir: String,
-}
 
 struct TopicHandler<'a> {
     topic: &'a str,
@@ -45,33 +28,27 @@ impl<'a> TopicHandler<'a> {
 }
 
 pub struct TinyDataClient {
-    args: Args,
     multi_progress_bar: MultiProgress,
 }
 
 impl TinyDataClient {
-    pub fn new(args: Args) -> Self {
+    pub fn new() -> Self {
         Self {
-            args,
             multi_progress_bar: MultiProgress::new(),
         }
     }
 
-    pub async fn run(&mut self) {
-        let args = self.args.clone();
-
+    pub async fn run(&self, topics: Vec<String>, nsamples: usize, dir: String) {
         //create image directories
-        for topic in &args.topics {
-            let dir = format!("{}/{}", args.dir, topic);
+        for topic in &topics {
+            let dir = format!("{}/{}", dir, topic);
             create_dir_all(&dir).expect("failed to create directory");
         }
 
-        let nsamples = args.nsamples;
-        // need thread-safe string for async
-        let dir = Arc::new(args.dir);
+        let dir = Arc::new(dir);
+        let topics_len = topics.len();
 
-        let futures: Vec<JoinHandle<u8>> = args
-            .topics
+        let futures: Vec<JoinHandle<u8>> = topics
             .into_iter()
             .map(|topic| {
                 let dir = Arc::clone(&dir);
@@ -104,8 +81,8 @@ impl TinyDataClient {
         println!(
             "{}/{} files saved successfully to `./{}` in {}s 📦",
             total,
-            self.args.nsamples * self.args.topics.len(),
-            self.args.dir,
+            nsamples * topics_len,
+            dir,
             elapsed.as_secs(),
         );
     }
