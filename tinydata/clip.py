@@ -1,8 +1,10 @@
 import os
+import sys
 
 import open_clip
 import torch
 from PIL import Image
+from progress.bar import Bar
 
 CUDA = torch.cuda.is_available()
 DEVICE = "cuda" if CUDA else "cpu"
@@ -42,21 +44,24 @@ def filter_directory(dir, threshold = 0.2):
     # cosine
     cosines = compute_cosine(all_image_features, text_features)
     cosines = cosines.detach().cpu().squeeze(1)
-    print(dir)
-    print(cosines)
 
     # filter 
     ids = torch.flatten((cosines<threshold).nonzero()).tolist()
     bad_imgs = [f for i,f in enumerate(imgs) if i in ids]
-    # remove_images(bad_imgs)
+    remove_images(bad_imgs)
 
-    print(f'removed {len(bad_imgs)} images')
+    return len(ids)
 
-def filter_directories(root, threshold=0.2):
-    _, dirs, _ = next(os.walk(root))
-    
-    for i, d in enumerate(dirs):
-        filter_directory(os.path.join(root,d), threshold)
 
-filter_directories("./images", 0.2)
+# pretty 
+def filter_directories(dirs, threshold=0.2):
+    count = 0
+    with Bar('Filtering ... ', max = len(dirs)) as bar:
+        for d in dirs:
+            count+=filter_directory(d, threshold)
+            bar.next()
+
+    sys.stdout.write("\033[F")
+    sys.stdout.write("\033[K")
+    print(f'🔎 Filtered out {count} images.')
 

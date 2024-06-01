@@ -4,3 +4,5 @@ images/*
 urls.txt
 py/*
 venv/*
+**/__pycache__/
+*.cpython-*.so

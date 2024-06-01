@@ -79,7 +79,7 @@ impl TinyDataClient {
         let total: u8 = total.into_iter().map(|res| res.unwrap()).sum();
 
         println!(
-            "{}/{} files saved successfully to `./{}` in {}s 📦",
+            "📦 {}/{} files saved successfully to `./{}` in {}s",
             total,
             nsamples * topics_len,
             dir,
