@@ -1,5 +1,5 @@
 [package]
-name = "tiny_data"
+name = "tinydata"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
@@ -8,7 +8,7 @@ repository = "https://github.com/nnethercott/tiny-data/tree/main"
 readme = "README.md"
 
 [lib]
-name = "tiny_data"
+name = "tinydata"
 crate-type = ["lib", "cdylib"]
 
 [dependencies]

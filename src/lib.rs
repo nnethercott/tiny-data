@@ -20,7 +20,7 @@ fn run(py: Python<'_>, topics: Vec<String>, nsamples: usize, dir: String) -> PyR
 
 /// A Python module implemented in Rust.
 #[pymodule]
-#[pyo3(name = "tiny_data")]
+#[pyo3(name = "tinydata")]
 fn tokio_bindings(_py: Python, m: &PyModule) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(run, m)?)?;
     Ok(())
