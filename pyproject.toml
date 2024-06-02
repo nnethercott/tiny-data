@@ -22,4 +22,4 @@ tinydata = "tinydata:run"
 
 
 [project.optional-dependencies]
-ml = ["open_clip_torch", "pillow", "progress"]
+ml = ["open_clip_torch == 2.24.0", "pillow", "progress"]
