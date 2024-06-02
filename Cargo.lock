@@ -1128,7 +1128,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "tiny-data"
+name = "tinydata"
 version = "0.1.0"
 dependencies = [
  "clap",
