@@ -9,7 +9,7 @@ readme = "README.md"
 
 [lib]
 name = "tinydata"
-crate-type = ["lib", "cdylib"]
+crate-type = ["cdylib"]
 
 [dependencies]
 reqwest = { version = "0.12", features = ["json", "stream"] }
