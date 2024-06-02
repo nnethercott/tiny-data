@@ -1,9 +1,11 @@
 # tiny-data
-A rust-based cli tool for building computer vision datasets built with [reqwest](https://docs.rs/reqwest/latest/reqwest/) and [tokio](https://tokio.rs/). 
+
+A rust-based cli tool for building computer vision datasets built with [reqwest](https://docs.rs/reqwest/latest/reqwest/) and [tokio](https://tokio.rs/).
 
 ![alt text](assets/images/demo.gif)
 
 You can get a list of the available options by running the command below:
+
 ```bash
 >> tiny-data -h
 Usage: tiny-data [OPTIONS]
@@ -16,11 +18,12 @@ Options:
 ```
 
 Example:
+
 ```bash
->> tiny-data --nsamples 10  --topics ferris_the_crab apples dogs --dir demo
+>> tiny-data --nsamples 10  --topics bats wombats -n 10 --dir images
 >> tree demo
 demo
-├── apples
+├── bats
 │   ├── 0.jpeg
 │   ├── 1.jpeg
 │   ├── 2.jpeg
@@ -31,38 +34,33 @@ demo
 │   ├── 7.jpeg
 │   ├── 8.jpeg
 │   └── 9.jpeg
-├── dogs
-│   ├── 0.jpeg
-│   ├── 1.jpeg
-│   ├── 2.jpeg
-│   ├── 3.jpeg
-│   ├── 4.jpeg
-│   ├── 5.jpeg
-│   ├── 6.jpeg
-│   ├── 7.jpeg
-│   ├── 8.jpeg
-│   └── 9.jpeg
-└── ferris_the_crab
-    ├── 0.jpeg
-    ├── 1.jpeg
-    ├── 2.jpeg
-    ├── 3.jpeg
-    ├── 4.jpeg
-    ├── 5.jpeg
-    ├── 6.jpeg
-    ├── 7.jpeg
-    ├── 8.jpeg
-    └── 9.jpeg
+└── wombats
+    ├── 0.jpeg
+    ├── 1.jpeg
+    ├── 2.jpeg
+    ├── 3.jpeg
+    ├── 4.jpeg
+    ├── 5.jpeg
+    ├── 6.jpeg
+    ├── 7.jpeg
+    ├── 8.jpeg
+    └── 9.jpeg
 ```
 
+# Installation
 
+To get started with `tiny-data` you need to enable the [Custom Search API](https://developers.google.com/custom-search/v1/overview) from Google and export the variables `SEARCH_ENGINE_ID` and `CUSTOM_SEARCH_API_KEY` to your environment.
 
-# Installation 
-To get started with `tiny-data` you need to enable the [Custom Search API](https://developers.google.com/custom-search/v1/overview) from Google and export the variables `SEARCH_ENGINE_ID` and `CUSTOM_SEARCH_API_KEY` to your environment. 
+**Note:** google limits the number of requests to 100/day which inherently puts a cap on the number of images you can download.
 
-**Note:**  google limits the number of requests to 100/day which inherently puts a cap on the number of images you can download. 
+The package itself can be downloaded from [crates.io](https://crates.io/) by running:
 
-The package itself can be downloaded from [crates.io](https://crates.io/) by running 
 ```bash
 cargo install tiny-data
+```
+
+The python bindings for the package can be downloaded from pypi with additional features for post-download filtering using CLIP by running:
+
+```bash 
+pip install tinydata[ml]
 ```

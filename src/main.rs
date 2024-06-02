@@ -1,5 +1,5 @@
 use clap::Parser;
-use tinydata::client::*;
+use tiny_data::client::*;
 
 #[derive(Parser, Debug, Clone)]
 pub struct Args {
