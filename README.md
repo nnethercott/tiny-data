@@ -59,8 +59,8 @@ The package itself can be downloaded from [crates.io](https://crates.io/) by run
 cargo install tiny-data
 ```
 
-The python bindings for the package can be downloaded from pypi with additional features for post-download filtering using CLIP by running:
+<!--- The python bindings for the package can be downloaded from pypi with additional features for post-download filtering using CLIP by running:
 
 ```bash 
 pip install tinydata[ml]
-```
+``` --->
