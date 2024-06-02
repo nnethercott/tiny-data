@@ -2,7 +2,7 @@
 
 A rust-based cli tool for building computer vision datasets built with [reqwest](https://docs.rs/reqwest/latest/reqwest/) and [tokio](https://tokio.rs/).
 
-![alt text](assets/images/demo.gif)
+![alt text](https://github.com/nnethercott/tiny-data/blob/main/assets/images/demo.gif?raw=true)
 
 You can get a list of the available options by running the command below:
 
@@ -20,9 +20,9 @@ Options:
 Example:
 
 ```bash
->> tiny-data --nsamples 10  --topics bats wombats -n 10 --dir images
->> tree demo
-demo
+>> tiny-data --topics bats wombats -n 10 --dir images
+>> tree images
+images
 ├── bats
 │   ├── 0.jpeg
 │   ├── 1.jpeg
