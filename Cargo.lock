@@ -1332,6 +1332,7 @@ dependencies = [
  "clap",
  "futures",
  "indicatif",
+ "openssl-sys",
  "pyo3",
  "pyo3-asyncio",
  "regex",
