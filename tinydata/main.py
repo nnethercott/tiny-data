@@ -2,22 +2,30 @@ import argparse
 import asyncio
 import os
 
-# https://medium.com/@yarusl42/asyncio-how-asyncio-works-part-2-33675c2c2f7d#:~:text=When%20you're%20writing%20production,focus%20on%20asynchronous%20I%2FO.
 import uvloop
 
 import tinydata.tinydata as td
 
-from .clip import filter_directories
-
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
+ml_installed = False
+
+# check if package was installed with optional dependencies 
+try:
+    from .clip import filter_directories
+    ml_installed = True 
+except:
+    pass
+
 
 async def main(args):
     await td.run(args.topics, args.nsamples, args.dir)
     if args.filter:
-        dirs = [os.path.join(args.dir, topic) for topic in args.topics]
-        filter_directories(dirs = dirs, threshold = args.clip_similarity_threshold)
+        if ml_installed:
+            dirs = [os.path.join(args.dir, topic) for topic in args.topics]
+            filter_directories(dirs = dirs, threshold = args.clip_similarity_threshold)
+        else:
+            raise ImportError("Optional dependencies for 'ml' are required. Please install them using 'pip install tinydata[ml]'")
 
-    # if args.filter -> filter
 
 def run():
     parser = argparse.ArgumentParser()
