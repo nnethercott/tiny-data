@@ -20,4 +20,3 @@ regex = "1.1"
 clap = { version = "4.5.4", features = ["derive"] }
 pyo3 = { version = "0.14", features = ["extension-module"] }
 pyo3-asyncio = { version = "0.14", features = ["tokio-runtime"] }
-openssl = { version = "0.10", features = ["vendored"] }
