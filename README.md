@@ -59,9 +59,10 @@ The package itself can be downloaded from [crates.io](https://crates.io/) by run
 cargo install tiny-data
 ```
 
-The python bindings for the package can be downloaded from pypi with additional features for post-download filtering using CLIP by running:
+The python bindings for the package can be downloaded from pypi by running: 
+<!-- with additional features for post-download filtering using CLIP by running: -->
 
 ```bash 
-pip install tinydata[ml]
+pip install tinydata
 ```
-Make sure you also install the appropriate version of `torch` from [here](https://pytorch.org/get-started/locally/) if you want to use open clip. 
+<!-- Make sure you also install the appropriate version of `torch` from [here](https://pytorch.org/get-started/locally/) if you want to use open clip.  -->
